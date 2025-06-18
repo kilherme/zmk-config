@@ -1,0 +1,62 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,kscan = &default_kscan;
+        zmk,matrix-transform = &default_transform;
+    };
+
+
+
+    default_kscan: kscan  {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "row2col";
+        col-gpios
+            = <&pro_micro 1 GPIO_ACTIVE_LOW> # 19 0
+            , <&pro_micro 2 GPIO_ACTIVE_LOW> # 22 1
+            , <&pro_micro 3 GPIO_ACTIVE_LOW> # 23 2
+            , <&pro_micro 4 GPIO_ACTIVE_LOW> # 25 3
+            , <&pro_micro 5 GPIO_ACTIVE_LOW> # 26 4
+            , <&pro_micro 6 GPIO_ACTIVE_LOW> # 28 5
+            , <&pro_micro 7 GPIO_ACTIVE_LOW> # 29 6
+            , <&pro_micro 8 GPIO_ACTIVE_LOW> # 30 7
+            ;
+        row-gpios
+            = <&ext1 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #07 0
+            , <&ext1 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #08 1
+            , <&ext1 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #09 2
+            , <&ext1 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #10 3
+            , <&ext1 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #11 4
+            , <&ext1 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #12 5
+            , <&ext1 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #13 6
+            , <&ext1 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #14 7
+            , <&ext1 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #15 8
+            , <&ext1 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #16 9
+            , <&ext1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #17 10
+            , <&ext1 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #18 11
+            , <&ext1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #20 12
+            , <&ext1 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #21 13
+            , <&ext1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #24 14
+            , <&ext1 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> #27 15
+            ;
+
+    };
+
+
+
+    default_transform: matrix_transform {
+        compatible = "zmk,matrix-transform";
+        rows = <8>;
+        columns = <16>;
+
+        map = <
+        RC(0,14)   RC(1,11)    RC(1,12)    RC(7,12)    RC(0,12)    RC(0,1)     RC(0,7)     RC(7,9)     RC(1,9)     RC(1,9)     RC(3,1)     RC(3,2)     RC(3,4)     RC(1,2)    RC(3,3)     RC(3,0)     RC(1,0) 
+        RC(1,14)   RC(3,14)    RC(3,11)    RC(3,12)    RC(3,10)    RC(1,10)    RC(1,13)    RC(3,13)    RC(3,7)     RC(3,9)     RC(3,9)    RC(3,8)     RC(1,8)      RC(1,7)    RC(7,1)    
+        RC(7,1)    RC(2,14)    RC(2,11)    RC(2,12)    RC(2,10)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)    RC(0,0)     RC(0,0)     RC(0,0)                 RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)
+        RC(0,0)    RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)                                         RC(0,0)     RC(0,0)     RC(0,0)
+        RC(0,0)    RC(0,0)    RC(0,0)    RC(0,0)                             RC(0,0)                 RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)     RC(0,0)                 RC(0,0)                 RC(0,0)     RC(0,0)
+        RC(0,0)
+        >;
+    };
+
+};

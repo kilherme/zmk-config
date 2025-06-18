@@ -1,0 +1,6 @@
+if SHIELD_X100E
+
+config ZMK_KEYBOARD_NAME
+    default "X100e Keyboard"
+
+endif
